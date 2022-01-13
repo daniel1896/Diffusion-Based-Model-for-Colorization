@@ -20,7 +20,7 @@ class Trainer():
     def __init__(self,config):
         self.device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
         self.diffusion = GaussianDiffusion(config.IMAGE_SIZE,config.CHANNEL_X,config.CHANNEL_Y,config.TIMESTEPS)
-        in_channels = config.CHANNEL_X + config.CHANNEL_Y
+        in_channels = config.CHANNEL_X + config.CHANNEL_Y + 1   # TODO: error with 6 ???
         out_channels = config.CHANNEL_Y
         self.network = UNetModel(
             config.IMAGE_SIZE,
