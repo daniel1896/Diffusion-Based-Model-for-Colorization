@@ -18,9 +18,9 @@ USE_SCALE_SHIFT_NORM : 'False'
 RESBLOCK_UPDOWN : 'False'
 USE_NEW_ATTENTION_ORDER : 'False'
 PATH_TRAIN_GT : 'data/train/PED'
-PATH_TEST_GT : 'data/test/PED'
+PATH_VALID_GT : 'data/valid/PED'
 PATH_TRAIN_IN : 'data/train/TF'
-PATH_TEST_IN : 'data/test/TF'
+PATH_VALID_IN : 'data/valid/TF'
 BATCH_SIZE : 16
 BATCH_SIZE_VAL : 8
 ITERATION_MAX : 1e6
