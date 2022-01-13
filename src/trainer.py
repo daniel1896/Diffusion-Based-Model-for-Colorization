@@ -8,11 +8,12 @@ import torch
 import torch.optim as optim
 import torch.nn as nn
 
+from functools import partial
+
 #from torch.utils.tensorboard import SummaryWriter
 from torch.utils.data import DataLoader
-
+from tqdm import tqdm
 import numpy as np
-import tqdm
 import copy
 
 class Trainer():
@@ -73,7 +74,6 @@ class Trainer():
             torch.save(self.ema_model.state_dict(),name)
 
     def train(self):
-
             to_torch = partial(torch.tensor, dtype=torch.float32)
             optimizer = optim.Adam(self.network.parameters(),lr=self.LR)
             iteration = 0
