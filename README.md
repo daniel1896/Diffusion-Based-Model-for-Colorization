@@ -1,21 +1,12 @@
-# WORK IN PROGRESS ( Not any trained model available yet / Training in progress )
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/daniel1896/Diffusion-Based-Model-for-Colorization/blob/main/inpainting.ipynb)
 
 
-# About this project 
-This is a first implementation of a Colorization Diffusion Based Method
+# WORK IN PROGRESS
+forked from [LouisRouss](https://github.com/LouisRouss/Diffusion-Based-Model-for-Colorization) and modified for inpainting
 
 # How to train the model
 Modify the conf.yml file, set the 'mode' option to 1. Then run the main.py file specifying the path to the config file  (absolute or relative)
 Example : python main.py --config conf.yml
-
-# Future of this repo
-I'm currently training the model with a shallower network than the Palette paper and a smaller batch size, according to my little computation power. Any insight/remark is welcome ! 
-
-
-The test mode isnt implemented yet
-
-
-For the validation loop in the training loop, necessity to use/find a more suitable/ an additional metric
 
 # Reference
 Palette Image_to_Image Diffusion Models https://arxiv.org/pdf/2111.05826v1.pdf
