@@ -1,7 +1,7 @@
 import os
 
 from .network import UNetModel,EMA
-from .dataloader import gray_color_data
+from .dataloader import DatasetLoader
 from .diffusion import GaussianDiffusion,extract
 
 import torch
@@ -40,16 +40,16 @@ class Trainer():
             config.RESBLOCK_UPDOWN,
             config.USE_NEW_ATTENTION_ORDER,
             ).to(self.device)
-        self.path_train_color = os.path.join(config.PATH_COLOR,'train.npy')
-        self.path_train_grey = os.path.join(config.PATH_GREY,'train.npy')
-        self.path_validation_color = os.path.join(config.PATH_COLOR,'validation.npy')
-        self.path_validation_grey = os.path.join(config.PATH_GREY,'validation.npy')
-        dataset_train = gray_color_data(self.path_train_color,self.path_train_grey)  
-        dataset_validation = gray_color_data(self.path_validation_color,self.path_validation_grey)
+        # self.path_train_color = os.path.join(config.PATH_COLOR,'train.npy')
+        # self.path_train_grey = os.path.join(config.PATH_GREY,'train.npy')
+        # self.path_validation_color = os.path.join(config.PATH_COLOR,'validation.npy')
+        # self.path_validation_grey = os.path.join(config.PATH_GREY,'validation.npy')
+        dataset_train = DatasetLoader(config.PATH_TRAIN_GT,config.PATH_TRAIN_IN)  
+        dataset_valid = DatasetLoader(config.PATH_VALID_GT,config.PATH_VALID_IN)  
         self.batch_size = config.BATCH_SIZE
         self.batch_size_val = config.BATCH_SIZE_VAL
         self.dataloader_train = DataLoader(dataset_train,batch_size=self.batch_size, shuffle=True)
-        self.dataloader_validation = DataLoader(dataset_validation,batch_size=self.batch_size_val,shuffle=False)
+        self.dataloader_valid = DataLoader(dataset_valid,batch_size=self.batch_size_val,shuffle=False)
         self.iteration_max = config.ITERATION_MAX
         self.EMA = EMA(0.9999)
         self.LR = config.LR
@@ -111,7 +111,7 @@ class Trainer():
                         self.save_model(f'models/model_ema_{iteration}.pth',EMA=True)
 
                     if iteration%self.validation_every == 0:
-                        tq_val = tqdm(self.dataloader_validation)
+                        tq_val = tqdm(self.dataloader_valid)
                         with torch.no_grad():
                             self.network.eval()
                             for grey,color in tq_val:
