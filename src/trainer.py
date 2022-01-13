@@ -132,8 +132,3 @@ class Trainer():
                                 loss = self.loss(color,y)
                                 loss_ema = self.loss(color,y_ema)
                                 tq.set_postfix({'loss' : loss.item(),'loss ema':loss_ema.item()})
-                    
-
-            
-
-        
