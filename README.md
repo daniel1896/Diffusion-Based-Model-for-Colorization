@@ -1,4 +1,4 @@
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/daniel1896/Diffusion-Based-Model-for-Colorization/blob/main/inpainting.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/daniel1896/Diffusion-Based-Model-for-Inpainting/blob/main/inpainting.ipynb)
 
 
 # WORK IN PROGRESS
